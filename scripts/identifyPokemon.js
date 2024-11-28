@@ -52,4 +52,4 @@ const sendRequest = async (imageFilePath) => {
 };
 
 // Call the function with the image file path
-sendRequest("C:\\Users\\manal\\Downloads\\images (16).png"); // Replace with the actual image file path
+sendRequest("C:\\Users\\JaymarManalaysay\\Downloads\\images (1).png"); // Replace with the actual image file path
