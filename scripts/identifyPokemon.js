@@ -1,5 +1,5 @@
 // Define the Bearer Token and URL
-import { readFile } from 'fs/promises';
+import readFile from 'fs/promises';
 
 const BEARER_TOKEN = "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";
 const API_URL = "https://api.groq.com/openai/v1/chat/completions";
@@ -45,11 +45,11 @@ const sendRequest = async (imageFilePath) => {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const result = await response.json();
-        console.log("Response:", JSON.stringify(result, null, 2));
+        return JSON.stringify(result, null, 2);
     } catch (error) {
         console.error("Error:", error.message);
     }
 };
 
 // Call the function with the image file path
-sendRequest("C:\\Users\\JaymarManalaysay\\Downloads\\images (1).png"); // Replace with the actual image file path
+export default sendRequest;

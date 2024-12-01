@@ -20,6 +20,7 @@ const filterByName = (arrPokemon, stringFilter) => {
 
 //Filter Pokemon By Ability
 const filterByAbility = async (arrPokemon, ability) => {
+  ability = ability.toLowerCase();
   if(ability.toUpperCase() === 'ALL' || !ability) return arrPokemon;
   const getAbilityUrl = 'https://pokeapi.co/api/v2/ability/' + ability;
   const abilityResponse = await getApi(getAbilityUrl);
@@ -42,16 +43,13 @@ const filterByType = async (arrPokemon, types) => {
     return arrPokemon;
   };
 
-//test constants
-const stringFilter = 't';
-const ability = 'ALL';
-const types = ['fire'];
+
 
 // Call Get Pokemon API and Filter Functions
-(async () => {
+export default async (stringFilter, ability, types) => {
   let arrPokemon = await getAllPokemon();
   arrPokemon = await filterByName(arrPokemon, stringFilter);
   arrPokemon = await filterByAbility(arrPokemon, ability);
   arrPokemon = await filterByType(arrPokemon, types);
   console.log(arrPokemon);
-})();
+};

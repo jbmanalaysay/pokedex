@@ -18,12 +18,12 @@ const getPokemon = async (pokemonName) => {
         types: pokemonJson.types.map((x)=> x.type.name ), 
         weight: pokemonJson.weight
     }
-    console.log(pokemonJson);
+    return pokemon;
 }
 
 function filterStat(pokemonJson,statName) {
-    return pokemonJson.stats.filter((x) => x.stat.name ==='statName')[0].base_stat
+    return pokemonJson.stats.filter((x) => x.stat.name === statName)[0].base_stat
 }
 
 
-(async()=>{console.log(getPokemon('bulbasaur'));})()
+(async()=>{console.log(await getPokemon('bulbasaur'));})()

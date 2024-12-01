@@ -5,7 +5,7 @@ const config = {
     pokemon: 'pokemon',
     moves : 'moves',
     type : 'type',
-    imageBaseUrl : `https://img.pokemondb.net/sprites/home/normal/2x/avif/{name}.avif`
+    imageBaseUrl : `https://img.pokemondb.net/sprites/home/normal/2x/avif/{name}.avif`,    
     }
 }
 
