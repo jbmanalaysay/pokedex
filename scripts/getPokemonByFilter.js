@@ -2,7 +2,7 @@ import getApi from './getRequestApi.js';
 
 // Get All Pokemon with Get Request
 const getAllPokemon = async () => {
-  const getAllPokemonUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=10000&';
+  const getAllPokemonUrl = 'https://pokeapi.co/api/v2/pokemon-form/?limit=10000&';
   const pokemonResponse = await getApi(getAllPokemonUrl);
   // Return Array of All Pokemon
   return pokemonResponse.results.map((x) => x.name);
@@ -10,7 +10,7 @@ const getAllPokemon = async () => {
 
 //Filter Pokemon By Name
 const filterByName = (arrPokemon, stringFilter) => {
-  arrPokemon = arrPokemon.filter((x) => x.includes(stringFilter));
+  arrPokemon = arrPokemon.filter((x) => x.toLowerCase().includes(stringFilter));
   return arrPokemon.sort((a, b) => {
     const indexA = a.indexOf(stringFilter);
     const indexB = b.indexOf(stringFilter);
@@ -51,5 +51,5 @@ export default async (stringFilter, ability, types) => {
   arrPokemon = await filterByName(arrPokemon, stringFilter);
   arrPokemon = await filterByAbility(arrPokemon, ability);
   arrPokemon = await filterByType(arrPokemon, types);
-  console.log(arrPokemon);
+  return arrPokemon;
 };

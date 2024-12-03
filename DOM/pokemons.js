@@ -1,14 +1,16 @@
 import abilityGetter from "../scripts/getAbilities.js";
 import createElementJs from "./createElement.js"
 import filterPokemonName from '../scripts/getPokemonByFilter.js'
+import pokemonCard from '../templates/pokemonCard.js'
 
 const abilitiesDropdown =  document.getElementById('abilities-dropdown');
 const nameFilter = document.getElementById('pokemon-name');
 const resetButton = document.getElementById('reset');
-
+const pokemonWrapper = document.getElementById('pokemon-wrapper');
+const advancedFilterButton = document.getElementById('advanced-filter-button');
+const advancedFilter = document.getElementById('advanced-filter');
 
 // Filter Variables
-let abilityValue = abilitiesDropdown.value;
 let types = [];
 
 (async () => {
@@ -18,6 +20,8 @@ let types = [];
         createElementJs.createOption(abilitiesDropdown,ability);
     }
 })();
+//Event Listener for Advanced Filter
+advancedFilterButton.addEventListener('click', () => advancedFilter.classList.toggle('hidden'));
 
 //Event Listener for Type Checkboxes
 const typeCheckboxes = [...(document.getElementById('types-filter').children)];
@@ -26,11 +30,21 @@ for(let typeCheckbox of typeCheckboxes) {
     typeCheckbox.addEventListener('change',checkboxAdded);
 }
 //Event Listener for Name Filter
-nameFilter.addEventListener('change', ( ) =>  filterPokemonName(nameFilter.value,abilitiesDropdown.value,types));
+nameFilter.addEventListener('blur', ( ) =>  createPokemonCard(nameFilter.value,abilitiesDropdown.value,types));
 //Event Listener for Abilities Filter
-abilitiesDropdown.addEventListener('change', ( ) =>  filterPokemonName(nameFilter.value,abilitiesDropdown.value,types));
+abilitiesDropdown.addEventListener('change', ( ) =>  createPokemonCard(nameFilter.value,abilitiesDropdown.value,types));
 //Event Listener for Reset Button
 resetButton.addEventListener('click', resetFunction);
+
+
+
+async function createPokemonCard (nameFilter,ability,types) {
+    const pokemonArr = await filterPokemonName(nameFilter,ability,types);
+    pokemonWrapper.innerHTML = '';    
+    for (let poke of pokemonArr){
+        pokemonCard(poke);
+    }
+}
 
 
 function resetFunction() {
@@ -38,7 +52,7 @@ function resetFunction() {
     abilitiesDropdown.value = 'ALL';
     nameFilter.value = '';
     deselectAllTypes();
-    filterPokemonName(nameFilter.value,abilitiesDropdown.value,types);
+    createPokemonCard(nameFilter.value,abilitiesDropdown.value,types);
 } 
 function deselectAllTypes (){
     typeCheckboxes.forEach(x => x.checked = false)
@@ -61,7 +75,7 @@ function checkboxAdded() {
     }
 
     types = checkedCheckboxes.map(x => x.id);
-    filterPokemonName(nameFilter.value,abilitiesDropdown.value,types);
+    createPokemonCard(nameFilter.value,abilitiesDropdown.value,types);
 }
 
 

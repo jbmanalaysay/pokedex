@@ -1,21 +1,15 @@
 // Define the Bearer Token and URL
-import readFile from 'fs/promises';
+
+
 
 const BEARER_TOKEN = "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";
 const API_URL = "https://api.groq.com/openai/v1/chat/completions";
 
-// Convert an image file to Base64
-const convertImageToBase64 = async (imageFilePath) => {
-    const fileBuffer = await readFile(imageFilePath); // Read the file
-    return fileBuffer.toString("base64"); // Convert buffer to Base64
-};
+
 
 // Function to send the request
-const sendRequest = async (imageFilePath) => {
+const sendRequest = async (base64String) => {
     try {
-        // Convert the image to Base64
-        const imagebase64 = await convertImageToBase64(imageFilePath);
-
         // Request payload
         const payload = {
             messages: [
@@ -23,7 +17,7 @@ const sendRequest = async (imageFilePath) => {
                     role: "user",
                     content: [
                         { type: "text", text: 'Name the pokemon only. Say if you cant.' },
-                        { type: "image_url", image_url: { url: `data:image/jpeg;base64,${imagebase64}` } },
+                        { type: "image_url", image_url: { url: `${base64String}` } },
                     ],
                 },
             ],
@@ -45,7 +39,7 @@ const sendRequest = async (imageFilePath) => {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const result = await response.json();
-        return JSON.stringify(result, null, 2);
+        return result.choices[0].message.content;
     } catch (error) {
         console.error("Error:", error.message);
     }

@@ -1,0 +1,101 @@
+/* General Body Styles */
+main {
+    height: calc(100vh - 60px);
+}
+
+/* Pokedex Container */
+#pokemon-details {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Navigation Links */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #ffffff;
+    background: #ff9800;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.navigation a:hover {
+    background: #e65100;
+}
+
+/* Pokémon Info */
+.pokemon-info {
+    margin-bottom: 15px;
+}
+
+.pokemon-id {
+    font-size: 24px;
+    color: #888;
+}
+
+.pokemon-name {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Pokémon Image */
+.pokemon-image img {
+    max-width: 150px;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+
+/* Types and Abilities */
+.pokemon-types, .pokemon-abilities {
+    margin: 20px 0;
+}
+
+h3 {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.types, .abilities div {
+    display: inline-block;
+    background: #ffccbc;
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: #d84315;
+    font-weight: bold;
+    margin: 3px;
+}
+
+/* Stats Section */
+.pokemon-stats {
+    background: #f3f4f6;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.stat {
+    margin: 5px 0;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+}
+
+.stat span {
+    color: #d32f2f;
+    font-weight: bold;
+}

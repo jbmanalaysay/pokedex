@@ -2,11 +2,14 @@ import config from '../config.js'
 import getApi from './getRequestApi.js'
 
 const getPokemon = async (pokemonName) => {
-    const pokemonUrl = config.endpoints.baseEndpoint + 'pokemon/' + pokemonName;
+    const pokemonFormUrl = config.endpoints.baseEndpoint + 'pokemon-form/' + pokemonName;
+    const pokemonFormJson = await getApi(pokemonFormUrl);
+    const pokemonUrl = pokemonFormJson.pokemon.url;
     const pokemonJson = await getApi(pokemonUrl);
     const pokemon = {
+        id: pokemonJson.id,
         abilities: pokemonJson.abilities.map((x)=> x.ability.name),
-        name: pokemonJson.name, 
+        name: pokemonFormJson.name, 
         stats: {
             hp: filterStat(pokemonJson,'hp'),
             attack: filterStat(pokemonJson,'attack'),
@@ -26,4 +29,4 @@ function filterStat(pokemonJson,statName) {
 }
 
 
-(async()=>{console.log(await getPokemon('bulbasaur'));})()
+export default getPokemon;

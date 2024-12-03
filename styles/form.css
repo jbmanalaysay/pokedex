@@ -1,0 +1,144 @@
+.hidden {
+    display: none;
+}
+
+
+form {
+    max-width: 60%px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+nav a {
+    color: antiquewhite;
+    background-color: cadetblue;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 10px 10px
+}
+
+nav :hover {
+    color: rgb(221, 147, 50);
+    background-color: cadetblue;
+    border: 2px solid antiquewhite;
+    transition: .5s;
+}
+
+
+input[type="button"] {
+    background-color: cadetblue;
+    color: antiquewhite;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    display: block;
+    width: 80%;
+    margin: auto;
+}
+
+input[type="button"]:hover {
+    color: rgb(221, 147, 50);
+    background-color: cadetblue;
+    border: 1px solid antiquewhite;
+    transition: .3s;
+}
+
+/* Advanced Filter Section */
+#advanced-filter {
+    background: #f0f0f0;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+#advanced-filter .wrapper {
+    margin-bottom: 20px;
+}
+
+/* Checkboxes */
+#types-filter label {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+
+
+/* Abilities Filter */
+#abilities-dropdown {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Reset Button */
+#reset {
+    background: #b4463e;
+    color: white;
+}
+
+#reset:hover {
+    background: #913d3d;
+}
+
+/* Pokemon Wrapper */
+#pokemon-wrapper {
+    margin-top: 20px;
+}
+
+/* Checkbox Styling */
+#types-filter input[type="checkbox"] {
+    display: none;
+    /* Hide the default checkbox */
+}
+
+#types-filter label {
+    display: inline-block;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Checked State */
+#types-filter input[type="checkbox"]:checked+label {
+    background-color: cadetblue;
+    color: white;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px #4CAF50;
+}
+
+/* Hover State */
+#types-filter label:hover {
+    background-color: #e0e0e0;
+}
+
+/* Focus State */
+#types-filter input[type="checkbox"]:focus+label {
+    outline: 2px solid #4CAF50;
+    outline-offset: 2px;
+}
+

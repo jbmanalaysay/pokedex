@@ -1,10 +1,10 @@
 import getApi from './getRequestApi.js'
 import config from '../config.js'
 
+
 const getPokemonForm = async (pokemonName) => {
     const pokemonUrl = 'https://pokeapi.co/api/v2/pokemon-form/' + pokemonName
     const formJson = await getApi(pokemonUrl);
-    console.log(config);
     return {
         name: formJson.name,
         id: formJson.id,

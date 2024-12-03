@@ -1,13 +1,13 @@
 const getApi = async (url) => {
     try {
-    const response = await fetch(url);
-    if(response.status !== 200) {
-        throw new Error('Error. Status Code: ' + response.status);
-    }
-    return response.json();
-    }
-    catch (e) {
-        console.log(e);
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.log(error);
     }
 }
 export default getApi;
